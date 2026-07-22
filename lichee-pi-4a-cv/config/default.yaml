@@ -1,0 +1,34 @@
+mode: demo
+input_source: file
+
+# Локальное хранилище видео
+videos_dir: videos
+video_path: ""
+loop_video: true
+
+# Камера (input_source: builtin | external)
+camera_id: 0
+camera_width: 640
+camera_height: 480
+camera_id_label: cam_01
+
+# Модель
+model_path: models/yolov8n.onnx
+use_onnx: true
+mock_inference: false
+confidence_threshold: 0.45
+input_size: [640, 640]
+frame_skip: 0
+
+# API
+api_host: 127.0.0.1
+api_port: 8080
+
+# События (без полных кадров — экономия места на диске)
+save_event_frames: false
+max_events: 300
+event_frame_quality: 65
+event_frame_max_width: 320
+events_dir: data/events
+events_db_path: data/events.json
+logs_dir: data/logs

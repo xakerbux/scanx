@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCANX</title>
+  <link rel="stylesheet" href="/static/style.css?v=11" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">SCANX</div>
+
+      <nav class="menu">
+        <div class="dropdown">
+          <button id="btnSourceMenu" class="menu-btn" type="button">Источник ▾</button>
+          <div id="sourceSubmenu" class="submenu">
+            <button type="button" data-source="file">Видеофайл</button>
+            <button type="button" data-source="builtin_camera">Встроенная камера</button>
+            <button type="button" data-source="external_camera">Внешняя USB-камера</button>
+          </div>
+        </div>
+
+        <div id="panelFile" class="source-panel">
+          <select id="videoSelect" class="ctrl"></select>
+          <button id="btnRefreshVideos" class="ctrl-btn" type="button" title="Обновить список">↻</button>
+        </div>
+
+        <div id="panelCamera" class="source-panel" hidden>
+          <select id="cameraSelect" class="ctrl" title="Камера"></select>
+          <button id="btnRefreshCameras" class="ctrl-btn" type="button" title="Найти камеры">↻</button>
+        </div>
+      </nav>
+
+      <div class="toolbar-panel">
+        <div id="renderGroup" class="render-group">
+          <button id="btnRender" class="action render-btn" type="button" title="Экспорт JSON (Ctrl+Alt+R)">Рендер</button>
+        </div>
+        <div class="confidence-control" title="Порог уверенности: выше — меньше ложных срабатываний">
+          <label for="confidenceSlider">Точность</label>
+          <input id="confidenceSlider" type="range" min="5" max="99" step="1" value="45" />
+          <span id="confidenceValue">45%</span>
+        </div>
+      </div>
+
+      <div class="status-group">
+        <span class="fps-label">FPS: <strong id="fps">0</strong></span>
+        <span id="statusBadge" class="badge stopped">stop</span>
+      </div>
+
+      <div class="actions">
+        <button id="btnTogglePlay" class="action primary" type="button" title="Старт / пауза (Space)">Старт</button>
+        <button id="btnEvents" class="action" type="button">События</button>
+      </div>
+    </header>
+
+    <main class="video-screen">
+      <img id="videoFrame" alt="Видео" />
+      <div id="placeholder">Выберите источник и нажмите «Старт» или Space</div>
+      <div id="errorBox" class="error-toast" hidden></div>
+    </main>
+
+    <aside id="eventsDrawer" class="events-drawer">
+      <div class="drawer-head">
+        <h2>Журнал событий</h2>
+        <button id="btnCloseEvents" type="button" title="Закрыть">×</button>
+      </div>
+      <ul id="eventsList"></ul>
+    </aside>
+  </div>
+
+  <script src="/static/app.js?v=18"></script>
+</body>
+</html>

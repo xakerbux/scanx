@@ -1,0 +1,9 @@
+mode: edge
+videos_dir: videos
+video_path: ""
+input_size: [416, 416]
+frame_skip: 1
+save_event_frames: false
+max_events: 200
+api_host: 0.0.0.0
+api_port: 8080
